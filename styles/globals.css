@@ -1,16 +1,26 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-sm;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer components {
+  #nprogress .bar {
+    /* background: #ce1212 !important; */
+    @apply !bg-red-500;
+  }
+  #nprogress .peg {
+    box-shadow: 0 0 10px #ce1212, 0 0 5px #ce1212;
+  }
 
-* {
-  box-sizing: border-box;
+  #nprogress .spinner-icon {
+    border-top-color: #ce1212;
+    border-left-color: #ce1212;
+  }
 }
