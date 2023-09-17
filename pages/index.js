@@ -1,10 +1,10 @@
-import { Fragment, useState } from 'react'
-import Head from 'next/head'
-import Card from '../components/Card'
-import SearchInput from '../components/SearchInput'
+import { Fragment, useState } from 'react';
+import Head from 'next/head';
+import Card from '../components/Card';
+import SearchInput from '../components/SearchInput';
 
 function Home({ sets }) {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
 
   return (
     <Fragment>
@@ -19,10 +19,10 @@ function Home({ sets }) {
           {sets
             .filter((set) => {
               if (!search) {
-                return set
+                return set;
               }
               if (set.name.toLowerCase().includes(search.toLowerCase())) {
-                return set
+                return set;
               }
             })
             .map((set) => (
@@ -31,25 +31,23 @@ function Home({ sets }) {
         </div>
       </div>
     </Fragment>
-  )
-}
-
-const filterSet = (sets) => {
-  console.log(sets)
+  );
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://api.pokemontcg.io/v2/sets?order')
-  const json = await res.json()
-  const data = json.data
+  const res = await fetch('https://api.pokemontcg.io/v2/sets?order');
+  const json = await res.json();
+  const data = json.data;
 
-  const sets = data.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate))
+  const sets = data.sort(
+    (a, b) => new Date(b.releaseDate) - new Date(a.releaseDate)
+  );
 
   return {
     props: {
       sets,
     },
-  }
+  };
 }
 
-export default Home
+export default Home;
